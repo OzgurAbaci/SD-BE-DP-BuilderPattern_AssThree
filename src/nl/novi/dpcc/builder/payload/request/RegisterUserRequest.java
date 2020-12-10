@@ -1,5 +1,10 @@
 package nl.novi.dpcc.builder.payload.request;
 
+import nl.novi.dpcc.builder.domain.Address;
+import nl.novi.dpcc.builder.domain.AddressBuilder;
+import nl.novi.dpcc.builder.domain.User;
+import nl.novi.dpcc.builder.domain.UserBuilder;
+
 public class RegisterUserRequest {
 
     private String firstName;
@@ -14,6 +19,30 @@ public class RegisterUserRequest {
     private String userName;
     private String passwordOne;
     private String passwordTwo;
+
+
+    public User getUser(){
+        return new UserBuilder()
+                .withFirstName(firstName)
+                .withLastName(lastName)
+                .withUserName(userName)
+                .withPasswordOne(passwordOne)
+                .withPasswordTwo(passwordTwo)
+                .build();
+    }
+
+    public Address getAdress(){
+        Address address = new AddressBuilder()
+                .withStreetName(streetName)
+                .withHousNumber(houseNumber)
+                .withHouseNumberAddition(houseNumberAddition)
+                .withPostalCode(postalCode)
+                .inProvince(province)
+                .build();
+        return address;
+//        Address tempAddress = new Address();
+//        return tempAddress;
+    }
 
     public String getFirstName() {
         return firstName;
